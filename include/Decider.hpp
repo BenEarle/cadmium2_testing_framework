@@ -222,9 +222,9 @@ class Decider: public Atomic<Decider_State> {
             {
                 std::cout << model_name << " [FAIL] Expected paths failed" << std::endl;
                 std::cout << "  Expected: ";
-                for(const auto& s : test_path) { std::cout << s << " "; }
+                for(const auto& s : test_path) { std::cout << s << "; "; }
                 std::cout << std::endl << "  Actual:   ";
-                for(const auto& s : actual_path) { std::cout << s << " "; }
+                for(const auto& s : actual_path) { std::cout << s << "; "; }
                 std::cout << std::endl;
             }
             std::cout << std::endl;
