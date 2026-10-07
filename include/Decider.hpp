@@ -213,22 +213,19 @@ class Decider: public Atomic<Decider_State> {
 
             bool test_path_success = (actual_path == test_path);
 
-            std::cout << std::endl;
             if(test_path_success)
             {
-                std::cout << model_name << " [INFO] Expected paths succeeded" << std::endl;
+                std::cout << "[INFO] Expected paths succeeded";
             }
             else
             {
-                std::cout << model_name << " [FAIL] Expected paths failed" << std::endl;
+                std::cout << "[FAIL] Expected paths failed" << std::endl;
                 std::cout << "  Expected: ";
                 for(const auto& s : test_path) { std::cout << s << "; "; }
                 std::cout << std::endl << "  Actual:   ";
                 for(const auto& s : actual_path) { std::cout << s << "; "; }
-                std::cout << std::endl;
             }
-            std::cout << std::endl;
-
+			std::cout << std::endl << std::endl;
             return test_path_success;
         }
 
@@ -291,15 +288,11 @@ class Decider: public Atomic<Decider_State> {
 
             if(test_conditions_success)
             {
-                std::cout << std:: endl;
-                std::cout << "EXPECTED OUTPUTS PASSED" << std::endl;
-                std::cout << std:: endl;
+                std::cout << "[INFO] Expected outputs passed" << std::endl;
             }
             else
             {
-                std::cout << std:: endl;
-                std::cout << "EXPECTED OUTPUTS FAILED" << std::endl;
-                std::cout << std:: endl;
+                std::cout << "[FAIL] Expected outputs failed" << std::endl;
             }
 
             return test_conditions_success;
