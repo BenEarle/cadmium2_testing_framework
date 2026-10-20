@@ -6,6 +6,7 @@
 
 #include <iostream>
 // C++ Standard Library Headers
+#include <cstddef>
 #include <limits>
 #include <string>
 #include <tuple>
@@ -95,6 +96,18 @@ class Decider: public Atomic<Decider_State> {
                     if(r.condition_entry == -1)
                     {
                         num_of_unexpected_outputs = num_of_unexpected_outputs + 1;
+                        std::cerr << "[FAIL] Unexpected output report received for condition_entry -1."
+                                  << std::endl;
+                        continue;
+                    }
+
+                    if(r.condition_entry <= 0 ||
+                       static_cast<std::size_t>(r.condition_entry) > test_conditions.size())
+                    {
+                        num_of_unexpected_outputs = num_of_unexpected_outputs + 1;
+                        std::cerr << "[FAIL] Comparator report condition index " << r.condition_entry
+                                  << " is out of range; expected indices are 1 through "
+                                  << test_conditions.size() << "." << std::endl;
                         continue;
                     }
 
